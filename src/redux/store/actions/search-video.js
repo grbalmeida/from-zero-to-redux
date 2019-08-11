@@ -17,7 +17,10 @@ export const startVideoSearch = () => {
 
 export const successVideoSearch = videos => {
   return {
-    type: SUCCESS_VIDEO_SEARCH
+    type: SUCCESS_VIDEO_SEARCH,
+    videos,
+    isLoading: false,
+    error: false
   }
 }
 
