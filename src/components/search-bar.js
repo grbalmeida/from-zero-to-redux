@@ -1,8 +1,15 @@
 import React from 'react'
+import { Segment, Input } from 'semantic-ui-react'
 
 const SearchBar = () => (
   <div className='search-bar'>
-    <h1>SearchBar</h1>
+    <Segment stacked>
+      <Input
+        icon='search'
+        size='large'
+        placeholder='Search...'
+      />
+    </Segment>
   </div>
 )
 
