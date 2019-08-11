@@ -1,7 +1,7 @@
 import React from 'react'
 
 const VideoPlayer = () => (
-  <div>
+  <div className='video-player'>
     <h1>VideoPlayer</h1>
   </div>
 )
