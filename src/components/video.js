@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Image, List } from 'semantic-ui-react'
 
-const Video = ({ video }) => {
+import { playVideo } from 'redux/store/actions/play-video'
+
+const Video = ({ playVideo, video }) => {
   const { title, thumbnails } = video.snippet
 
   return (
@@ -10,7 +13,7 @@ const Video = ({ video }) => {
       animated
       verticalAlign='middle'
     >
-      <List.Item>
+      <List.Item onClick={() => playVideo(video)}>
         <Image
           src={thumbnails.default.url}
         />
@@ -23,7 +26,14 @@ const Video = ({ video }) => {
 }
 
 Video.propTypes = {
+  playVideo: PropTypes.func.isRequired,
   video: PropTypes.object.isRequired
 }
 
-export default Video
+const mapDispatchToProps = dispatch => {
+  return {
+    playVideo: video => dispatch(playVideo(video))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Video)
