@@ -1,26 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { List, Image } from 'semantic-ui-react'
 
-const VideoList = ({ videos, isLoading, error }) => (
-  <div className='video-list'>
-    <List
-      animated
-      verticalAlign='middle'
-    >
-      <List.Item>
-        <Image
-          avatar
-          src=''
-        />
-        <List.Content>
-          <List.Header>VideoTitle</List.Header>
-        </List.Content>
-      </List.Item>
-    </List>
-  </div>
-)
+import Video from './video'
+
+const VideoList = ({ videos, isLoading, error }) => {
+  return (
+    <div className='video-list'>
+      {videos.map(video => <Video video={video} />)}
+    </div>
+  )
+}
 
 VideoList.propTypes = {
   videos: PropTypes.array.isRequired,
