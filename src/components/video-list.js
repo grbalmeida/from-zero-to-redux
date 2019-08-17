@@ -1,13 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Dimmer, Loader } from 'semantic-ui-react'
 
 import Video from './video'
 
 const VideoList = ({ videos, isLoading, error }) => {
   return (
     <div className='video-list'>
-      {videos.map(video => <Video video={video} />)}
+      {isLoading &&
+      <Dimmer active>
+        <Loader size='medium'>
+          Loading...
+        </Loader>
+      </Dimmer>
+      }
+      {videos.map(video => <Video key={video.etag} video={video} />)}
     </div>
   )
 }
