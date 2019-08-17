@@ -34,9 +34,9 @@ export const errorVideoSearch = () => {
 
 export const searchVideo = term => {
   return dispatch => {
-    dispatch(startVideoSearch)
+    dispatch(startVideoSearch())
     youtubeSearch(API_KEY, { q: term })
-      .then(data => dispatch(successVideoSearch(data.item)))
-      .catch(() => dispatch(errorVideoSearch))
+      .then(data => dispatch(successVideoSearch(data.items)))
+      .catch(() => dispatch(errorVideoSearch()))
   }
 }
