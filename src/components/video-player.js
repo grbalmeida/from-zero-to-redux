@@ -21,8 +21,8 @@ const VideoPlayer = ({ video }) => {
             id={id.videoId}
             source='youtube'
           />
-          <p>{title}</p>
-          <p>{description}</p>
+          <p className='video-title'>{title}</p>
+          <p className='video-description'>{description}</p>
         </div>
       }
     </div>
