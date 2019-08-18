@@ -1,66 +1,30 @@
 import React from 'react'
-import {
-  Button,
-  InputAdornment,
-  MenuItem,
-  TextField
-} from '@material-ui/core'
+import { Checkbox, Typography } from '@material-ui/core'
 
 import './List.css'
-
-const units = ['kg', 'lt', 'un']
+import Form from './form'
+import { Card } from 'components'
 
 const List = () => (
   <div className='page-container'>
-    <form className='form-container'>
-      <div className='form-row'>
-        <TextField
-          label='List'
-          name='list'
-          value=''
-          onChange={() => {}}
-          required
-        />
-        <Button variant='outlined' color='secondary'>Add</Button>
-      </div>
-      <div className='form-row'>
-        <TextField
-          label='Product'
-          name='product'
-          value=''
-          onChange={() => {}}
-          required
-        />
-        <TextField
-          label='Quantity'
-          name='quantity'
-          value=''
-          onChange={() => {}}
-          required
-        />
-        <TextField
-          select
-          label='Unit'
-          name='unit'
-          value=''
-          onChange={() => {}}
-          required
-        >
-          {units.map(unit => (
-            <MenuItem key={unit} value={unit}>{unit}</MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          label='Price'
-          name='price'
-          value=''
-          onChange={() => {}}
-          InputProps={{
-            startAdornment: <InputAdornment position='start'>R$</InputAdornment>
-          }}
-        />
-      </div>
-    </form>
+    <Form />
+    <div className='list-items-container'>
+      <Card
+        containerClass='list-item'
+        link='#'
+      >
+        <div>
+          <div className='list-item-header'>
+            <Typography variant='subtitle1' component='h2'>
+              Coffee
+            </Typography>
+            <Checkbox />
+          </div>
+          <Typography component='p'>1 unit</Typography>
+          <Typography component='p'>R$ 10.00</Typography>
+        </div>
+      </Card>
+    </div>
   </div>
 )
 

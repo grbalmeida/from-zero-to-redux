@@ -1,7 +1,8 @@
 import React from 'react'
 import { faShoppingBasket, faCheck } from '@fortawesome/free-solid-svg-icons'
 
-import { Card, ListItem } from 'pages/home'
+import { ListItem } from 'pages/home'
+import { Card } from 'components'
 import { LIST } from 'routes'
 
 const List = () => (
