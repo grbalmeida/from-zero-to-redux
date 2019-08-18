@@ -3,6 +3,7 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 
 import './App.css'
+import { Home } from 'pages'
 import { Header } from 'components'
 
 const theme = createMuiTheme({
@@ -19,6 +20,7 @@ const theme = createMuiTheme({
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <Header />
+    <Home />
   </MuiThemeProvider>
 )
 
