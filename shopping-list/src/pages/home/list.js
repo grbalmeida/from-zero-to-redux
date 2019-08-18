@@ -2,9 +2,10 @@ import React from 'react'
 import { faShoppingBasket, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 import { Card, ListItem } from 'pages/home'
+import { LIST } from 'routes'
 
 const List = () => (
-  <Card containerClass='list-container' hasFooter>
+  <Card containerClass='list-container' link={LIST} hasFooter>
     <div>
       <p className='title'>Month</p>
       <div className='list-card-body'>
