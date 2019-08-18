@@ -10,7 +10,7 @@ const ListItem = ({ icon, text }) => (
 )
 
 ListItem.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.object.isRequired,
   text: PropTypes.string.isRequired
 }
 
