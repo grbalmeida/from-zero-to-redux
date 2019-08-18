@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import {
   Card as MaterialCard,
   CardActionArea,
-  CardContent,
-  CardActions,
-  Divider
+  CardContent
 } from '@material-ui/core'
+
+import Footer from './footer'
 
 const Card = ({ containerClass, children, hasFooter }) => (
   <div className={containerClass}>
@@ -19,16 +19,6 @@ const Card = ({ containerClass, children, hasFooter }) => (
       {hasFooter && <Footer />}
     </MaterialCard>
   </div>
-)
-
-const Footer = () => (
-  <>
-    <Divider />
-    <CardActions className='card-footer'>
-      <p>18/08/2019</p>
-      <p>100.00</p>
-    </CardActions>
-  </>
 )
 
 Card.propTypes = {
