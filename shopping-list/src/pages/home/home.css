@@ -9,6 +9,27 @@
   width: 80%;
 }
 
+.list-container {
+  width: 220px;
+  margin: 20px;
+}
+
+.list-card-body {
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+}
+
+.list-card-item {
+  display: flex;
+  align-items: center;
+  font-size: 13.5px;
+}
+
+.list-card-item svg {
+  margin-right: 10px;
+}
+
 .card {
   width: 100%;
   display: flex;
@@ -22,4 +43,15 @@
 .card-content {
   display: flex;
   justify-content: center;
+}
+
+.card-footer {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bolder;
+  color: '#757575'
 }
