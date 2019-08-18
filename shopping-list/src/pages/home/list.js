@@ -2,11 +2,15 @@ import React from 'react'
 import { faShoppingBasket, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 import { ListItem } from 'pages/home'
-import { Card } from 'components'
+import { Card, Footer } from 'components'
 import { LIST } from 'routes'
 
 const List = () => (
-  <Card containerClass='list-container' link={LIST} hasFooter>
+  <Card
+    containerClass='list-container'
+    link={LIST}
+    footer={<Footer />}
+  >
     <div>
       <p className='title'>Month</p>
       <div className='list-card-body'>

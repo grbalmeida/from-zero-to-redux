@@ -7,9 +7,9 @@ import {
   CardContent
 } from '@material-ui/core'
 
-import Footer from './footer'
+import './card.css'
 
-const Card = ({ containerClass, children, link, hasFooter }) => (
+const Card = ({ containerClass, children, link, footer }) => (
   <div className={containerClass}>
     <Link to={link}>
       <MaterialCard className='card'>
@@ -18,7 +18,7 @@ const Card = ({ containerClass, children, link, hasFooter }) => (
             {children}
           </CardContent>
         </CardActionArea>
-        {hasFooter && <Footer />}
+        {footer}
       </MaterialCard>
     </Link>
   </div>
@@ -28,7 +28,7 @@ Card.propTypes = {
   containerClass: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   link: PropTypes.string.isRequired,
-  hasFooter: PropTypes.bool
+  footer: PropTypes.node
 }
 
 export default Card
