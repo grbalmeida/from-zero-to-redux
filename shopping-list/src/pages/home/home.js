@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import './home.css'
 import { List, NewList } from 'pages/home'
+import { getListTotal } from 'store/reducers/list'
 
 const Home = ({ items, list, total }) => (
   <div className='page-container'>
@@ -20,7 +21,7 @@ Home.propTypes = {
 
 const mapStateToProps = state => ({
   ...state.list,
-  total: state.list.items.reduce((total, item) => total + item.total, 0)
+  total: getListTotal(state)
 })
 
 export default connect(mapStateToProps, null)(Home)

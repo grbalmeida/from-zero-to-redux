@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect'
+
 import { Types } from '../actions/list'
 
 const INITIAL_STATE = {
@@ -23,3 +25,8 @@ export default function list (state = INITIAL_STATE, action) {
 function getItemTotal (product) {
   return product.price * product.quantity
 }
+
+export const getListTotal = createSelector(
+  state => state.list.items,
+  items => items.reduce((total, item) => total + item.total, 0)
+)
