@@ -19,7 +19,8 @@ class Form extends Component {
     product: '',
     quantity: '',
     unit: '',
-    price: ''
+    price: '',
+    showErrors: false
   }
 
   handleChange = (event) => {
@@ -31,12 +32,17 @@ class Form extends Component {
   handleSubmit = () => {
     const { list, product, quantity, unit, price } = this.state
 
-    this.props.addProduct({ product, quantity, unit, price }, list)
+    if (![list, product, quantity, unit].every(Boolean)) {
+      this.setState({
+        showErrors: true
+      })
+    } else {
+      this.props.addProduct({ product, quantity, unit, price }, list)
+    }
   }
 
   render () {
-    const { list, product, quantity, unit, price } = this.state
-    console.log(this)
+    const { list, product, quantity, unit, price, showErrors } = this.state
 
     return (
       <form className='form-container'>
@@ -47,6 +53,7 @@ class Form extends Component {
             value={list}
             onChange={this.handleChange}
             required
+            error={!list && showErrors}
           />
           <Button
             color='secondary'
@@ -62,6 +69,7 @@ class Form extends Component {
             value={product}
             onChange={this.handleChange}
             required
+            error={!product && showErrors}
           />
           <TextField
             label='Quantity'
@@ -69,6 +77,7 @@ class Form extends Component {
             value={quantity}
             onChange={this.handleChange}
             required
+            error={!quantity && showErrors}
           />
           <TextField
             select
@@ -77,6 +86,7 @@ class Form extends Component {
             value={unit}
             onChange={this.handleChange}
             required
+            error={!unit && showErrors}
           >
             {units.map(unit => (
               <MenuItem key={unit} value={unit}>{unit}</MenuItem>
