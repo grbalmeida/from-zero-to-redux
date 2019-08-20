@@ -1,27 +1,36 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Checkbox, Typography } from '@material-ui/core'
 
 import { Card } from 'components'
 import { ListItemFooter } from 'pages/list'
 
-const ListItem = () => (
+const ListItem = ({ price, product, quantity, total, unit }) => (
   <Card
     containerClass='list-item'
     image='https://images.freeimages.com/images/large-previews/313/coffee-1559191.jpg'
     link='#'
-    footer={<ListItemFooter />}
+    footer={<ListItemFooter total={total} />}
   >
     <div>
       <div className='list-item-header'>
         <Typography variant='subtitle1' component='h2'>
-            Coffee
+          {product}
         </Typography>
         <Checkbox />
       </div>
-      <Typography component='p'>1 unit</Typography>
-      <Typography component='p'>R$ 10.00</Typography>
+      <Typography component='p'>{quantity} {unit}</Typography>
+      <Typography component='p'>R$ {price}</Typography>
     </div>
   </Card>
 )
+
+ListItem.propTypes = {
+  price: PropTypes.string.isRequired,
+  product: PropTypes.string.isRequired,
+  quantity: PropTypes.string.isRequired,
+  total: PropTypes.number.isRequired,
+  unit: PropTypes.string.isRequired
+}
 
 export default ListItem

@@ -14,7 +14,7 @@ import { Creators as ListActions } from 'store/actions/list'
 const units = ['kg', 'lt', 'un']
 
 class Form extends Component {
-  state = {
+  INITIAL_STATE = {
     list: '',
     product: '',
     quantity: '',
@@ -22,6 +22,8 @@ class Form extends Component {
     price: '',
     showErrors: false
   }
+
+  state = this.INITIAL_STATE
 
   handleChange = (event) => {
     this.setState({
@@ -33,11 +35,10 @@ class Form extends Component {
     const { list, product, quantity, unit, price } = this.state
 
     if (![list, product, quantity, unit].every(Boolean)) {
-      this.setState({
-        showErrors: true
-      })
+      this.setState({ showErrors: true })
     } else {
       this.props.addProduct({ product, quantity, unit, price }, list)
+      this.setState({ ...this.INITIAL_STATE, list })
     }
   }
 
@@ -112,7 +113,7 @@ Form.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  list: state.list
+  addProduct: state.list
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(ListActions, dispatch)
