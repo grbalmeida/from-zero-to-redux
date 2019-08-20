@@ -14,3 +14,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.card-image {
+  object-fit: cover;
+}
