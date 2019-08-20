@@ -1,4 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import {
   Button,
   InputAdornment,
@@ -6,9 +9,11 @@ import {
   TextField
 } from '@material-ui/core'
 
+import { Creators as ListActions } from 'store/actions/list'
+
 const units = ['kg', 'lt', 'un']
 
-const Form = () => (
+const Form = ({ addProduct }) => (
   <form className='form-container'>
     <div className='form-row'>
       <TextField
@@ -60,4 +65,14 @@ const Form = () => (
   </form>
 )
 
-export default Form
+Form.propTypes = {
+  addProduct: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+  list: state.list
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators(ListActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form)
