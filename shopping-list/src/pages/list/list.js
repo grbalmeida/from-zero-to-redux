@@ -11,7 +11,7 @@ const List = ({ items }) => (
   <div className='page-container'>
     <Form />
     <div className='list-items-container'>
-      {items.map((item, index) => <ListItem key={index} {...item} />)}
+      {items.map(item => <ListItem key={item.id} {...item} />)}
     </div>
   </div>
 )

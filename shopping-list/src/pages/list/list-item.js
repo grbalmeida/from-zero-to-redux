@@ -5,12 +5,12 @@ import { Checkbox, Typography } from '@material-ui/core'
 import { Card } from 'components'
 import { ListItemFooter } from 'pages/list'
 
-const ListItem = ({ price, product, quantity, total, unit }) => (
+const ListItem = ({ id, price, product, quantity, total, unit }) => (
   <Card
     containerClass='list-item'
     image='https://images.freeimages.com/images/large-previews/313/coffee-1559191.jpg'
     link='#'
-    footer={<ListItemFooter total={total} />}
+    footer={<ListItemFooter id={id} total={total} />}
   >
     <div>
       <div className='list-item-header'>
@@ -26,6 +26,7 @@ const ListItem = ({ price, product, quantity, total, unit }) => (
 )
 
 ListItem.propTypes = {
+  id: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   product: PropTypes.string.isRequired,
   quantity: PropTypes.string.isRequired,
