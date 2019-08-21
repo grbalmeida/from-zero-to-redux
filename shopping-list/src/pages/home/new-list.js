@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import { Card } from 'components'
-import { LIST } from 'routes'
+import { NEW_LIST } from 'routes'
 import { ListActions } from 'store/actions'
 
 const NewList = ({ newList }) => (
   <Card
     action={newList}
     containerClass='new-list-container'
-    link={LIST}
+    link={NEW_LIST}
   >
     <div>
       <p className='title'>Add new shopping list</p>

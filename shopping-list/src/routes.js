@@ -1,2 +1,5 @@
 export const HOME = '/'
 export const LIST = '/list'
+export const LIST_ACTION = '/list/:action'
+export const LIST_EDIT = '/list/edit'
+export const NEW_LIST = '/list/new'

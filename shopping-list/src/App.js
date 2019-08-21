@@ -7,7 +7,7 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import './App.css'
 import { Home, List } from 'pages'
 import { Header } from 'components'
-import { HOME, LIST } from 'routes'
+import { HOME, LIST_ACTION } from 'routes'
 import store from 'store'
 
 const theme = createMuiTheme({
@@ -29,7 +29,7 @@ const App = () => (
           <Header />
           <Switch>
             <Route exact path={HOME} component={Home} />
-            <Route path={LIST} component={List} />
+            <Route path={LIST_ACTION} component={List} />
           </Switch>
         </div>
       </BrowserRouter>

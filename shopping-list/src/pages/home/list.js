@@ -5,13 +5,13 @@ import { faShoppingBasket, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 import { ListItem } from 'pages/home'
 import { Card, Footer } from 'components'
-import { LIST } from 'routes'
+import { LIST_EDIT } from 'routes'
 import { getClosedItems, getOpenedItems } from 'store/reducers/list'
 
 const List = ({ closedItems, list, openedItems, total }) => (
   <Card
     containerClass='list-container'
-    link={LIST}
+    link={LIST_EDIT}
     footer={<Footer total={total} />}
   >
     <div>

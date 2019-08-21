@@ -80,6 +80,10 @@ class Form extends Component {
   render () {
     const { list, product, quantity, unit, price, showErrors } = this.state
 
+    if (!this.props.showForm) {
+      return <div />
+    }
+
     return (
       <form className='form-container'>
         <div className='form-row'>
@@ -147,11 +151,13 @@ Form.propTypes = {
   addProduct: PropTypes.func.isRequired,
   finishUpdate: PropTypes.func.isRequired,
   updateProduct: PropTypes.func.isRequired,
+  showForm: PropTypes.bool.isRequired,
   form: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state => ({
-  form: state.form
+const mapStateToProps = (state, ownProps) => ({
+  form: state.form,
+  showForm: state.form.action === 'update' || ownProps.url === 'new'
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ ...FormActions, ...ListActions }, dispatch)
