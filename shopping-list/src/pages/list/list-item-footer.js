@@ -32,6 +32,6 @@ ListItemFooter.propTypes = {
   total: PropTypes.number.isRequired
 }
 
-const mapDispatchToProduct = dispatch => bindActionCreators(ListActions, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators(ListActions, dispatch)
 
-export default connect(null, mapDispatchToProduct)(ListItemFooter)
+export default connect(null, mapDispatchToProps)(ListItemFooter)

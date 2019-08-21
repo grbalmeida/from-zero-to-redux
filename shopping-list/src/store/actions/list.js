@@ -1,6 +1,7 @@
 export const Types = {
   ADD_PRODUCT: 'ADD_PRODUCT',
-  DELETE_PRODUCT: 'DELETE_PRODUCT'
+  DELETE_PRODUCT: 'DELETE_PRODUCT',
+  TOGGLE_PRODUCT: 'TOGGLE_PRODUCT'
 }
 
 export const Creators = {
@@ -12,6 +13,11 @@ export const Creators = {
 
   deleteProduct: productId => ({
     type: Types.DELETE_PRODUCT,
+    productId
+  }),
+
+  toggleProduct: productId => ({
+    type: Types.TOGGLE_PRODUCT,
     productId
   })
 }
