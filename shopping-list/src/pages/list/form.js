@@ -23,7 +23,7 @@ class Form extends Component {
     showErrors: false
   }
 
-  updateListItem = (prevProps) => {
+  populateForm = (prevProps) => {
     if (this.props.form.action === 'update' && prevProps.form.productToUpdate !== this.props.form.productToUpdate) {
       const { product, quantity, unit, price } = this.props.form.productToUpdate
 
@@ -37,8 +37,23 @@ class Form extends Component {
     }
   }
 
+  addItem = (list, price, product, quantity, unit) => {
+    this.props.addProduct({ product, quantity, unit, price }, list)
+    this.clearState(list)
+  }
+
+  updateItem = (list, price, product, quantity, unit) => {
+    const { id, checked } = this.props.form.productToUpdate
+    this.props.updateProduct({ checked, id, price, product, quantity, unit }, list)
+    this.clearState(list)
+  }
+
+  clearState = (list) => {
+    this.setState({ ...this.INITIAL_STATE, list })
+  }
+
   componentDidUpdate (prevProps) {
-    this.updateListItem(prevProps)
+    this.populateForm(prevProps)
   }
 
   state = this.INITIAL_STATE
@@ -50,13 +65,14 @@ class Form extends Component {
   }
 
   handleSubmit = () => {
-    const { list, product, quantity, unit, price } = this.state
+    const { list, price, product, quantity, unit } = this.state
 
     if (![list, product, quantity, unit].every(Boolean)) {
       this.setState({ showErrors: true })
     } else {
-      this.props.addProduct({ product, quantity, unit, price }, list)
-      this.setState({ ...this.INITIAL_STATE, list })
+      this.props.form.action === 'new'
+        ? this.addItem(list, price, product, quantity, unit)
+        : this.updateItem(list, price, product, quantity, unit)
     }
   }
 
@@ -76,7 +92,7 @@ class Form extends Component {
           />
           <Button
             color='secondary'
-            children='Add'
+            children='Save'
             variant='outlined'
             onClick={this.handleSubmit}
           />
@@ -128,6 +144,7 @@ class Form extends Component {
 
 Form.propTypes = {
   addProduct: PropTypes.func.isRequired,
+  updateProduct: PropTypes.func.isRequired,
   form: PropTypes.object.isRequired
 }
 
