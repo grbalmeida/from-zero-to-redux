@@ -46,6 +46,7 @@ class Form extends Component {
     const { id, checked } = this.props.form.productToUpdate
     this.props.updateProduct({ checked, id, price, product, quantity, unit }, list)
     this.clearState(list)
+    this.props.finishUpdate()
   }
 
   clearState = (list) => {
@@ -144,6 +145,7 @@ class Form extends Component {
 
 Form.propTypes = {
   addProduct: PropTypes.func.isRequired,
+  finishUpdate: PropTypes.func.isRequired,
   updateProduct: PropTypes.func.isRequired,
   form: PropTypes.object.isRequired
 }
