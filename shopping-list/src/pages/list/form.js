@@ -9,7 +9,7 @@ import {
   TextField
 } from '@material-ui/core'
 
-import { Creators as ListActions } from 'store/actions/list'
+import { ListActions, FormActions } from 'store/actions'
 
 const units = ['kg', 'lt', 'un']
 
@@ -116,6 +116,6 @@ const mapStateToProps = state => ({
   addProduct: state.list
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators(ListActions, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ ...FormActions, ...ListActions }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form)

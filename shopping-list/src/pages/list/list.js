@@ -5,13 +5,13 @@ import { bindActionCreators } from 'redux'
 
 import './List.css'
 import { Form, ListItem } from 'pages/list'
-import { Creators as ListActions } from 'store/actions/list'
+import { ListActions } from 'store/actions'
 
 const List = ({ items }) => (
   <div className='page-container'>
     <Form />
     <div className='list-items-container'>
-      {items.map(item => <ListItem key={item.id} {...item} />)}
+      {items.map(item => <ListItem key={item.id} item={item} />)}
     </div>
   </div>
 )

@@ -6,49 +6,37 @@ import { Checkbox, Typography } from '@material-ui/core'
 
 import { Card } from 'components'
 import { ListItemFooter } from 'pages/list'
-import { Creators as ListActions } from 'store/actions/list'
+import { ListActions } from 'store/actions'
 
-const ListItem = ({
-  checked,
-  id,
-  price,
-  product,
-  quantity,
-  toggleProduct,
-  total,
-  unit
-}) => (
-  <Card
-    containerClass='list-item'
-    image='https://images.freeimages.com/images/large-previews/313/coffee-1559191.jpg'
-    link='#'
-    footer={<ListItemFooter id={id} total={total} />}
-  >
-    <div>
-      <div className='list-item-header'>
-        <Typography variant='subtitle1' component='h2'>
-          {product}
-        </Typography>
-        <Checkbox
-          checked={checked}
-          onClick={() => toggleProduct(id)}
-        />
+const ListItem = ({ item, toggleProduct }) => {
+  const { checked, id, price, product, quantity, unit } = item
+  return (
+    <Card
+      containerClass='list-item'
+      image='https://images.freeimages.com/images/large-previews/313/coffee-1559191.jpg'
+      link='#'
+      footer={<ListItemFooter item={item} />}
+    >
+      <div>
+        <div className='list-item-header'>
+          <Typography variant='subtitle1' component='h2'>
+            {product}
+          </Typography>
+          <Checkbox
+            checked={checked}
+            onClick={() => toggleProduct(id)}
+          />
+        </div>
+        <Typography component='p'>{quantity} {unit}</Typography>
+        <Typography component='p'>R$ {price}</Typography>
       </div>
-      <Typography component='p'>{quantity} {unit}</Typography>
-      <Typography component='p'>R$ {price}</Typography>
-    </div>
-  </Card>
-)
+    </Card>
+  )
+}
 
 ListItem.propTypes = {
-  checked: PropTypes.bool.isRequired,
-  id: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  product: PropTypes.string.isRequired,
-  quantity: PropTypes.string.isRequired,
-  toggleProduct: PropTypes.func.isRequired,
-  total: PropTypes.number.isRequired,
-  unit: PropTypes.string.isRequired
+  item: PropTypes.object.isRequired,
+  toggleProduct: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(ListActions, dispatch)
