@@ -12,6 +12,7 @@ const ListItem = ({ item, toggleProduct }) => {
   const { checked, id, price, product, quantity, unit } = item
   return (
     <Card
+      action={() => toggleProduct(id)}
       containerClass='list-item'
       image='https://images.freeimages.com/images/large-previews/313/coffee-1559191.jpg'
       link='#'
@@ -22,10 +23,7 @@ const ListItem = ({ item, toggleProduct }) => {
           <Typography variant='subtitle1' component='h2'>
             {product}
           </Typography>
-          <Checkbox
-            checked={checked}
-            onClick={() => toggleProduct(id)}
-          />
+          <Checkbox checked={checked} />
         </div>
         <Typography component='p'>{quantity} {unit}</Typography>
         <Typography component='p'>R$ {price}</Typography>

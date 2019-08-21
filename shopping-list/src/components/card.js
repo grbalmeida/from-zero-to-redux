@@ -10,11 +10,14 @@ import {
 
 import './card.css'
 
-const Card = ({ containerClass, children, image, link, footer }) => (
+const Card = ({ action, containerClass, children, image, link, footer }) => (
   <div className={containerClass}>
     <Link to={link}>
       <MaterialCard className='card'>
-        <CardActionArea className='card-action-area'>
+        <CardActionArea
+          className='card-action-area'
+          onClick={action}
+        >
           {
             image &&
             <CardMedia
@@ -35,6 +38,7 @@ const Card = ({ containerClass, children, image, link, footer }) => (
 )
 
 Card.propTypes = {
+  action: PropTypes.func,
   containerClass: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   image: PropTypes.string,
