@@ -23,6 +23,24 @@ class Form extends Component {
     showErrors: false
   }
 
+  updateListItem = (prevProps) => {
+    if (this.props.form.action === 'update' && prevProps.form.productToUpdate !== this.props.form.productToUpdate) {
+      const { product, quantity, unit, price } = this.props.form.productToUpdate
+
+      this.setState({
+        product,
+        quantity,
+        unit,
+        price,
+        showErrors: false
+      })
+    }
+  }
+
+  componentDidUpdate (prevProps) {
+    this.updateListItem(prevProps)
+  }
+
   state = this.INITIAL_STATE
 
   handleChange = (event) => {
@@ -109,11 +127,12 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  addProduct: PropTypes.func.isRequired
+  addProduct: PropTypes.func.isRequired,
+  form: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-  addProduct: state.list
+  form: state.form
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ ...FormActions, ...ListActions }, dispatch)
