@@ -11,11 +11,17 @@ const Form = () => (
     <div className='row form-group'>
       <div className='col-md-6'>
         <label htmlFor='form-select-from'>From:</label>
-        <Currencies id='form-select-from' />
+        <Currencies
+          id='form-select-from'
+          name='from'
+        />
       </div>
       <div className='col-md-6'>
         <label htmlFor='form-select-to' id='form-select-to'>To:</label>
-        <Currencies id='form-select-to' />
+        <Currencies
+          id='form-select-to'
+          name='to'
+        />
       </div>
     </div>
     <div className='row'>
