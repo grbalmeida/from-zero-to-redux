@@ -28,6 +28,7 @@ class Form extends Component {
       const { product, quantity, unit, price } = this.props.form.productToUpdate
 
       this.setState({
+        list: this.props.form.listToUpdate,
         product,
         quantity,
         unit,
