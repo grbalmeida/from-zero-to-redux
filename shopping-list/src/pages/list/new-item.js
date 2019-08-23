@@ -1,26 +1,39 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
-import { ListActions } from 'store/actions'
+import { FormActions } from 'store/actions'
 import { Card } from 'components'
 
-const NewItem = () => (
+const NewItem = ({ list, startAdd }) => (
   <Card
+    action={() => startAdd(list)}
     link='#'
     containerClass='list-item'
   >
-    <p className='title'>New Product</p>
-    <FontAwesomeIcon
-      icon={faPlusCircle}
-      color='#E4E4E4'
-      size='8x'
-    />
+    <div className='new-item'>
+      <p className='title'>New Product</p>
+      <FontAwesomeIcon
+        icon={faPlusCircle}
+        color='#E4E4E4'
+        size='8x'
+      />
+    </div>
   </Card>
 )
 
-const mapDispatchToProps = dispatch => bindActionCreators(ListActions, dispatch)
+NewItem.propTypes = {
+  list: PropTypes.string,
+  startAdd: PropTypes.func.isRequired
+}
 
-export default connect(null, mapDispatchToProps)(NewItem)
+const mapStateToProps = state => ({
+  list: state.list.list
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators(FormActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewItem)

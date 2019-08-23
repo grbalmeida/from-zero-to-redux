@@ -15,10 +15,6 @@
   justify-content: center;
 }
 
-.card-content > svg {
-  margin: auto;
-}
-
 .card-image {
   object-fit: cover;
 }
