@@ -1,7 +1,9 @@
 import React from 'react'
 
+import { Header } from 'components'
+
 const App = () => (
-  <div>App</div>
+  <Header />
 )
 
 export default App
