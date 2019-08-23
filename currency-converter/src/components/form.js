@@ -1,4 +1,5 @@
 import React from 'react'
+import { Currencies } from 'components'
 
 const Form = () => (
   <form>
@@ -10,19 +11,15 @@ const Form = () => (
     <div className='row form-group'>
       <div className='col-md-6'>
         <label htmlFor='form-select-from'>From:</label>
-        <select className='form-control' id='form-select-from'>
-          <option value='BRL' label='BRL'>BRL</option>
-          <option value='USD' label='USD'>USD</option>
-        </select>
+        <Currencies id='form-select-from' />
       </div>
       <div className='col-md-6'>
         <label htmlFor='form-select-to' id='form-select-to'>To:</label>
-        <select className='form-control' id='form-select-from'>
-          <option value='BRL' label='BRL'>BRL</option>
-          <option value='USD' label='USD' selected>USD</option>
-        </select>
+        <Currencies id='form-select-to' />
       </div>
-      <button className='btn btn-primary' onClick={e => e.preventDefault()}>Convert</button>
+    </div>
+    <div className='row'>
+      <button type='button' className='btn btn-primary btn-lg btn-block'>Convert</button>
     </div>
   </form>
 )
