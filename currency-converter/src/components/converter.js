@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Form } from 'components'
+
 const Converter = () => (
   <div className='content'>
     <div className='row justify-content-md-center'>
@@ -8,7 +10,7 @@ const Converter = () => (
           Currency Broker
         </div>
         <div className='card-body'>
-          Form
+          <Form />
         </div>
         <div className='card-footer text-light bg-dark'>
           0.00
