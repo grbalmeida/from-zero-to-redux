@@ -24,10 +24,13 @@ class Form extends Component {
   }
 
   populateForm = (prevProps) => {
-    if (this.props.form.action === 'update' && prevProps.form.productToUpdate !== this.props.form.productToUpdate) {
-      const { product, quantity, unit, price } = this.props.form.productToUpdate
+    const { action, listToUpdate, productToUpdate } = this.props.form
+
+    if (action === 'update' && prevProps.form.productToUpdate !== productToUpdate) {
+      const { product, quantity, unit, price } = productToUpdate
 
       this.setState({
+        list: listToUpdate,
         product,
         quantity,
         unit,
@@ -35,11 +38,18 @@ class Form extends Component {
         showErrors: false
       })
     }
+
+    if (action === 'new' && prevProps.form.action !== action) {
+      this.setState({
+        list: listToUpdate || ''
+      })
+    }
   }
 
   addItem = (list, price, product, quantity, unit) => {
     this.props.addProduct({ product, quantity, unit, price }, list)
     this.clearState(list)
+    this.props.finishAdd()
   }
 
   updateItem = (list, price, product, quantity, unit) => {
@@ -71,9 +81,9 @@ class Form extends Component {
     if (![list, product, quantity, unit].every(Boolean)) {
       this.setState({ showErrors: true })
     } else {
-      this.props.form.action === 'new'
-        ? this.addItem(list, price, product, quantity, unit)
-        : this.updateItem(list, price, product, quantity, unit)
+      this.props.form.action === 'update'
+        ? this.updateItem(list, price, product, quantity, unit)
+        : this.addItem(list, price, product, quantity, unit)
     }
   }
 
@@ -149,6 +159,7 @@ class Form extends Component {
 
 Form.propTypes = {
   addProduct: PropTypes.func.isRequired,
+  finishAdd: PropTypes.func.isRequired,
   finishUpdate: PropTypes.func.isRequired,
   updateProduct: PropTypes.func.isRequired,
   showForm: PropTypes.bool.isRequired,
@@ -157,7 +168,7 @@ Form.propTypes = {
 
 const mapStateToProps = (state, ownProps) => ({
   form: state.form,
-  showForm: state.form.action === 'update' || ownProps.url === 'new'
+  showForm: !!state.form.action || ownProps.url === 'new'
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ ...FormActions, ...ListActions }, dispatch)
