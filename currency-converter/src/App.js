@@ -1,10 +1,13 @@
 import React from 'react'
 
 import 'bootstrap-css-only'
-import { Header } from 'components'
+import { Converter, Header } from 'components'
 
 const App = () => (
-  <Header />
+  <>
+    <Header />
+    <Converter />
+  </>
 )
 
 export default App
