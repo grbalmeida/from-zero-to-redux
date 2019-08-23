@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import './List.css'
-import { Form, ListItem } from 'pages/list'
+import { Form, ListItem, NewItem } from 'pages/list'
 import { ListActions } from 'store/actions'
 
 class List extends Component {
@@ -15,6 +15,10 @@ class List extends Component {
         <div className='list-items-container'>
           {this.props.items.map(item => <ListItem key={item.id} item={item} />)}
         </div>
+        {
+          this.props.match.params.action === 'edit' &&
+          <NewItem />
+        }
       </div>
     )
   }
