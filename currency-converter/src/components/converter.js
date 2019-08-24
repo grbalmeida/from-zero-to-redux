@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { Form } from 'components'
 
-const Converter = () => (
+const Converter = ({ convert }) => (
   <div className='content'>
     <div className='row justify-content-md-center'>
       <div className='card text-center w-50'>
@@ -14,12 +15,16 @@ const Converter = () => (
           <Form />
         </div>
         <div className='card-footer text-light bg-dark'>
-          0.00
+          {convert.quotes && convert.quotes[Object.keys(convert.quotes)[0]]}
         </div>
       </div>
     </div>
   </div>
 )
+
+Converter.propTypes = {
+  convert: PropTypes.any.isRequired
+}
 
 const mapStateToProps = state => ({
   convert: state.convertReducer
