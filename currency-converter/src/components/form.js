@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -59,11 +60,21 @@ class Form extends Component {
           </div>
         </div>
         <div className='row'>
-          <button type='button' className='btn btn-primary btn-lg btn-block'>Convert</button>
+          <button
+            type='button'
+            className='btn btn-primary btn-lg btn-block'
+            onClick={() => this.props.convertCurrencies(this.state)}
+          >
+            Convert
+          </button>
         </div>
       </form>
     )
   }
+}
+
+Form.propTypes = {
+  convertCurrencies: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({ convertCurrencies }, dispatch)
