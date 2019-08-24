@@ -1,5 +1,9 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
 import { Currencies } from 'components'
+import { convertCurrencies } from 'store/actions'
 
 const Form = () => (
   <form>
@@ -30,4 +34,6 @@ const Form = () => (
   </form>
 )
 
-export default Form
+const mapDispatchToProps = dispatch => bindActionCreators(convertCurrencies, dispatch)
+
+export default connect(null, mapDispatchToProps)(Form)

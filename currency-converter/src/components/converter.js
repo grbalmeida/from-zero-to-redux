@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import { Form } from 'components'
 
@@ -20,4 +21,8 @@ const Converter = () => (
   </div>
 )
 
-export default Converter
+const mapStateToProps = state => ({
+  convert: state.convertReducer
+})
+
+export default connect(mapStateToProps, null)(Converter)
