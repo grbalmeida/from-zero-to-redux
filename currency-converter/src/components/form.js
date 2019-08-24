@@ -5,7 +5,7 @@ const Form = () => (
   <form>
     <div className='row justify-content-md-center'>
       <div className='input-group input-group-lg'>
-        <input type='number' className='form-control' />
+        <input type='number' className='form-control' name='amount' />
       </div>
     </div>
     <div className='row form-group'>
