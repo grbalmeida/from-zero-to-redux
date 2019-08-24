@@ -6,16 +6,9 @@ import API_KEY from 'api-key-currency'
 const BASE_URL = 'http://www.apilayer.net/api/'
 
 export function convertCurrencies ({ from, to, amount }) {
-  const url = `${BASE_URL}convert?access_key=${API_KEY}`
+  const url = `${BASE_URL}/live?access_key=${API_KEY}&source=${from}&currencies=${to}`
 
-  const parameters = {
-    from,
-    to,
-    amount,
-    format: 1
-  }
-
-  const request = axios.get(url, parameters)
+  const request = axios.get(url)
 
   return {
     type: CONVERT_CURRENCIES,
